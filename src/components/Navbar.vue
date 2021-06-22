@@ -1,8 +1,9 @@
 <template>
-  <b-navbar>
+  <b-navbar class="is-primary nav-pad">
     <template #brand>
-      <b-navbar-item tag="router-link" :to="{ path: '/' }">
+      <b-navbar-item tag="router-link" :to="{ path: '/home' }">
         <img
+          class="image-sizing"
           src="https://minglesports.tech/assets/images/logo.svg"
           alt="Company logo for Mingle Sports"
         />
@@ -20,10 +21,7 @@
     <template #end>
       <b-navbar-item tag="div">
         <div class="buttons">
-          <!-- <a class="button is-primary">
-            <strong>Sign up</strong>
-          </a> -->
-          <a class="button is-light"> Log Out </a>
+          <a class="button is-danger is-light logout-button"> Log Out </a>
         </div>
       </b-navbar-item>
     </template>
@@ -38,3 +36,26 @@ export default Vue.extend({
   props: {},
 });
 </script>
+
+<style lang="scss">
+.nav-pad {
+  padding: 0rem 1.5rem;
+}
+
+.image-sizing {
+  max-height: 5rem !important;
+}
+
+.logout-button {
+  flex: auto;
+}
+
+.router-link-exact-active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.navbar-burger {
+  height: auto !important;
+}
+</style>
