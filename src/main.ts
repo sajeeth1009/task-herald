@@ -5,7 +5,7 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 import App from "./App.vue";
-import router from "./router";
+import router from "./router/router";
 import store from "./store";
 import "@/theme/mingle-theme.scss";
 
