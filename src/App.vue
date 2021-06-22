@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <Navbar />
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/taskboard">My Taskboard</router-link>
@@ -30,3 +31,15 @@
   }
 }
 </style>
+
+<script lang="ts">
+import Vue from "vue";
+import Navbar from "@/components/Navbar.vue"; // @ is an alias to /src
+
+export default Vue.extend({
+  name: "Home",
+  components: {
+    Navbar,
+  },
+});
+</script>
