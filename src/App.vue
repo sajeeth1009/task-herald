@@ -1,10 +1,6 @@
 <template>
   <div id="app">
     <Navbar />
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/taskboard">My Taskboard</router-link>
-    </div>
     <router-view />
   </div>
 </template>
