@@ -1,5 +1,5 @@
 <template>
-  <b-navbar class="is-primary nav-pad">
+  <b-navbar class="is-primary nav-pad nav-margin">
     <template #brand>
       <b-navbar-item tag="router-link" :to="{ path: '/home' }">
         <img
@@ -21,7 +21,9 @@
     <template #end>
       <b-navbar-item tag="div">
         <div class="buttons">
-          <a class="button is-danger is-light logout-button"> Log Out </a>
+          <a class="button is-danger is-light logout-button" @click="logout">
+            Log Out
+          </a>
         </div>
       </b-navbar-item>
     </template>
@@ -33,13 +35,21 @@ import Vue from "vue";
 
 export default Vue.extend({
   name: "NavBar",
-  props: {},
+  methods: {
+    logout: function () {
+      alert("OOPS! \n This part of the website is still under construction");
+    },
+  },
 });
 </script>
 
 <style lang="scss">
 .nav-pad {
   padding: 0rem 1.5rem;
+}
+
+.nav-margin {
+  margin-bottom: 1rem;
 }
 
 .image-sizing {
