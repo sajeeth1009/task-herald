@@ -6,3 +6,7 @@ export interface Task {
   deadline: Date;
   completed: boolean;
 }
+
+export interface TaskList {
+  taskList: Task[];
+}
