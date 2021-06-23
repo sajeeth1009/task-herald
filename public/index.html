@@ -1,15 +1,23 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="en">
   <head>
+    <meta http-equiv="Content-Security-Policy" content="
+    default-src <%=VUE_APP_CSP_DEFAULT_SRC%>;
+    media-src <%=VUE_APP_CSP_MEDIA_SRC%>;
+    img-src <%=VUE_APP_CSP_IMG_SRC%>;
+    style-src <%=VUE_APP_CSP_STYLE_SRC%>;
+    script-src  <%=VUE_APP_CSP_SCRIPT_SRC%>;
+    child-src <%=VUE_APP_CSP_CHILD_SRC%>;
+    connect-src <%=VUE_APP_CSP_CONNECT_URLS%>">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
+    <title><%= VUE_APP_APP_NAME %></title>
   </head>
   <body>
     <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+      <strong>We're sorry but <%= VUE_APP_APP_NAME %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
