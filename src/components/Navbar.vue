@@ -48,10 +48,6 @@ export default Vue.extend({
   padding: 0rem 1.5rem;
 }
 
-.nav-margin {
-  margin-bottom: 1rem;
-}
-
 .image-sizing {
   max-height: 5rem !important;
 }
