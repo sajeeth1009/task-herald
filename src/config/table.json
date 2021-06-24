@@ -1,0 +1,11 @@
+{
+  "isPaginated": true,
+  "isPaginationSimple": true,
+  "isPaginationRounded": true,
+  "paginationPosition": "bottom",
+  "defaultSortDirection": "asc",
+  "sortIcon": "arrow-up",
+  "sortIconSize": "is-small",
+  "perPage": 10,
+  "iconPack": "fas"
+}
