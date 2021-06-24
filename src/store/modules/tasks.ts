@@ -1,6 +1,6 @@
 import { Commit } from "vuex";
 import { Task } from "@/api/types/task";
-import { getTaskListRequest } from "@/api/taskAPI";
+import { getTaskListRequest, updateTaskRequest } from "@/api/taskAPI";
 
 export interface TaskState {
   taskList: Task[];
@@ -32,7 +32,19 @@ const actions = {
         commit("setTasks", response.data);
       })
       .catch((err) => {
-        console.log(err);
+        console.log("Failed to set Tasks", err);
+      });
+  },
+  updateTask(
+    { commit }: CommitFunction,
+    payload: { taskId: string; task: Partial<Task> }
+  ): void {
+    updateTaskRequest(payload.taskId, payload.task)
+      .then((response) => {
+        commit("updateTaskStore", response.data);
+      })
+      .catch((err) => {
+        console.log("Failed to update Task ", err);
       });
   },
 };
@@ -41,8 +53,21 @@ const actions = {
 const mutations = {
   setTasks(state: TaskState, taskResponse: Task[]): void {
     state.taskList = taskResponse;
-    state.completedTasks = taskResponse.filter((task) => task.completed).length;
-    state.pendingTasks = state.taskList.length - state.completedTasks;
+    updateTaskReport(state, taskResponse);
+  },
+
+  updateTaskStore(state: TaskState, taskResponse: Task): void {
+    state.taskList.map((task) => {
+      if (task.id === taskResponse.id) task = taskResponse;
+    });
+    updateTaskReport(state);
+  },
+
+  deleteTask(state: TaskState, taskId: string): void {
+    state.taskList = state.taskList.filter((task) => {
+      task.id === taskId;
+    });
+    updateTaskReport(state);
   },
 };
 
@@ -53,3 +78,9 @@ export default {
   actions,
   mutations,
 };
+function updateTaskReport(state: TaskState, taskResponse?: Task[]) {
+  state.completedTasks = taskResponse
+    ? taskResponse.filter((task) => task.completed).length
+    : state.taskList.filter((task) => task.completed).length;
+  state.pendingTasks = state.taskList.length - state.completedTasks;
+}

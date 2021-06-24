@@ -14,7 +14,7 @@ export const saveTaskRequest = (task: Task): Promise<AxiosResponse<string>> =>
 
 export const updateTaskRequest = (
   taskId: string,
-  task: Task
+  task: Partial<Task>
 ): Promise<AxiosResponse<Task>> =>
   apiInstance.put<Task>(`/v1/task/${taskId}`, { task });
 
