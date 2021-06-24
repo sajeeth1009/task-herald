@@ -21,7 +21,7 @@
             Your Remaining Tasks: {{ tasks.pendingTasks }}
           </b-tag>
         </b-taglist>
-        <DataTable />
+        <DataTable :data="tableData" />
       </div>
     </div>
   </div>
@@ -31,6 +31,7 @@
 import Vue from "vue";
 import { mapState } from "vuex";
 
+import { Task } from "@/api/types/task";
 import DataTable from "@/components/DataTable.vue";
 
 export default Vue.extend({
@@ -41,11 +42,18 @@ export default Vue.extend({
   created: function () {
     this.$store.dispatch("tasks/getTasks");
   },
-  methods: {},
+  methods: {
+    updateCompletedStatus: function (taskId: string) {
+      this.$store.dispatch("tasks/updateCompleted", { id: taskId });
+    },
+  },
   computed: {
     ...mapState({
       tasks: "tasks",
     }),
+    tableData: function () {
+      return this.tasks.taskList as Task[];
+    },
   },
 });
 </script>
