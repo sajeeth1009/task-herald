@@ -66,7 +66,7 @@
         <b-checkbox
           class="check-box-custom"
           :value="props.row.completed"
-          @click.native="statusUpdate(props.row.id)"
+          @click.native="statusUpdate(props.row.id, !props.row.completed)"
         />
       </b-table-column>
       <b-table-column label="Actions" centered>
@@ -104,8 +104,8 @@ export default {
   },
 
   methods: {
-    statusUpdate: function (id: string): void {
-      console.log("here");
+    statusUpdate: function (id: string, completed: boolean): void {
+      this.$emit("update-task", { taskId: id, task: { completed: completed } });
     },
   },
 };

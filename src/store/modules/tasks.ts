@@ -57,8 +57,8 @@ const mutations = {
   },
 
   updateTaskStore(state: TaskState, taskResponse: Task): void {
-    state.taskList.map((task) => {
-      if (task.id === taskResponse.id) task = taskResponse;
+    state.taskList = state.taskList.map((task) => {
+      return task.id === taskResponse.id ? taskResponse : task;
     });
     updateTaskReport(state);
   },

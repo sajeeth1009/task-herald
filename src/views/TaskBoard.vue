@@ -21,7 +21,7 @@
             Your Remaining Tasks: {{ tasks.pendingTasks }}
           </b-tag>
         </b-taglist>
-        <DataTable :data="tableData" />
+        <DataTable :data="tableData" @update-task="handleTaskUpdate" />
       </div>
     </div>
   </div>
@@ -43,8 +43,11 @@ export default Vue.extend({
     this.$store.dispatch("tasks/getTasks");
   },
   methods: {
-    updateCompletedStatus: function (taskId: string) {
-      this.$store.dispatch("tasks/updateCompleted", { id: taskId });
+    handleTaskUpdate: function (event: {
+      taskId: string;
+      task: Partial<Task>;
+    }) {
+      this.$store.dispatch("tasks/updateTask", event);
     },
   },
   computed: {
