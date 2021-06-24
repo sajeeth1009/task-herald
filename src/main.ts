@@ -12,7 +12,10 @@ import "@/theme/mingle-theme.scss";
 Vue.config.productionTip = false;
 library.add(fas);
 Vue.component("font-awesome-icon", FontAwesomeIcon);
-Vue.use(Buefy, { defaultIconPack: "fas" });
+Vue.use(Buefy, {
+  defaultIconComponent: "font-awesome-icon",
+  defaultIconPack: "fas",
+});
 
 new Vue({
   router,
