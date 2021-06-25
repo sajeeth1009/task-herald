@@ -1,7 +1,15 @@
 # task-herald
 
+Vue Based Front end interface to create, update and delete your daily tasks.
+
+## Pre-requisities
+- GIT
+- Yarn
+- Compatible Browser (Chrome, Mozilla, Safari)
+
 ## Project setup
 
+First, clone this repository into your intended destination. CD into your newly cloned directory and run the following command to install the dependencies of this project. 
 ```
 yarn install
 ```
@@ -24,16 +32,20 @@ VUE_APP_CSP_CONNECT_URLS="http://localhost:8080 https://localhost:8080 http://lo
 ```
 
 ### Compiles and hot-reloads for development
+To start a local version of the task-herald web app, run the following command after changing directories into the root of the application.
 ```
 yarn serve
 ```
+This should bring up a new version of the front end.
 
 ### Compiles and minifies for production
+To create a build for production deployment run the following command.
 ```
 yarn build
 ```
 
 ### Run your unit tests
+To run unit tests type the following command:
 ```
 yarn test:unit
 ```
@@ -44,6 +56,7 @@ yarn test:e2e
 ```
 
 ### Lints and fixes files
+TO fix lint issues run the following command. Current config: ESLint and Prettier
 ```
 yarn lint
 ```
