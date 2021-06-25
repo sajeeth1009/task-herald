@@ -46,7 +46,7 @@
         v-slot="props"
       >
         <span class="tag is-primary">
-          {{ new Date(props.row.created).toLocaleDateString() }}
+          {{ new Date(props.row.created).toLocaleDateString("en-GB") }}
         </span>
       </b-table-column>
 
@@ -58,7 +58,7 @@
         v-slot="props"
       >
         <span class="tag is-primary">
-          {{ new Date(props.row.deadline).toLocaleDateString() }}
+          {{ new Date(props.row.deadline).toLocaleDateString("en-GB") }}
         </span>
       </b-table-column>
 
