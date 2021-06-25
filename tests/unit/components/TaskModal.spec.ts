@@ -25,7 +25,7 @@ const emptyData = {
 } as Task;
 
 describe("TaskModal.vue for Edit", () => {
-  let wrapper: Wrapper<TaskModal>;
+  let wrapper: Wrapper<Vue>;
   beforeAll(function () {
     wrapper = mount(TaskModal, {
       propsData: { taskDetails: data },
@@ -38,11 +38,9 @@ describe("TaskModal.vue for Edit", () => {
   });
 
   it("expect form to be loaded from props", () => {
-    const inputs: WrapperArray<TaskModal> = wrapper.findAll("input.input");
-    const textArea: Wrapper<TaskModal> = wrapper.find("textarea.textarea");
-    const checkbox: Wrapper<TaskModal> = wrapper.find(
-      "label.b-checkbox.checkbox"
-    );
+    const inputs: WrapperArray<Vue> = wrapper.findAll("input.input");
+    const textArea: Wrapper<Vue> = wrapper.find("textarea.textarea");
+    const checkbox: Wrapper<Vue> = wrapper.find("label.b-checkbox.checkbox");
     const map: { [k: string]: string } = {};
     inputs.wrappers.forEach((wrapper) => {
       const key: string | null = wrapper.element.getAttribute("placeholder");
@@ -58,7 +56,7 @@ describe("TaskModal.vue for Edit", () => {
   });
 
   it("expect edit event to be triggered on save", async () => {
-    const button: Wrapper<TaskModal> = wrapper.find("button.button.is-primary");
+    const button: Wrapper<Vue> = wrapper.find("button.button.is-primary");
     await button.trigger("click");
     wrapper.vm.$nextTick(() => {
       (wrapper.vm as any).submit();
@@ -81,7 +79,7 @@ describe("TaskModal.vue for Edit", () => {
 });
 
 describe("TaskModal.vue for Create", () => {
-  let wrapper: Wrapper<TaskModal>;
+  let wrapper: Wrapper<Vue>;
   beforeAll(function () {
     wrapper = mount(TaskModal, {
       propsData: { taskDetails: emptyData },
@@ -90,11 +88,9 @@ describe("TaskModal.vue for Create", () => {
   });
 
   it("expect form to be empty when props are empty", () => {
-    const textArea: Wrapper<TaskModal> = wrapper.find("textarea.textarea");
-    const checkbox: Wrapper<TaskModal> = wrapper.find(
-      "label.b-checkbox.checkbox"
-    );
-    const inputs: WrapperArray<TaskModal> = wrapper.findAll("input.input");
+    const textArea: Wrapper<Vue> = wrapper.find("textarea.textarea");
+    const checkbox: Wrapper<Vue> = wrapper.find("label.b-checkbox.checkbox");
+    const inputs: WrapperArray<Vue> = wrapper.findAll("input.input");
     const map: { [k: string]: string } = {};
     inputs.wrappers.forEach((wrapper) => {
       const key: string | null = wrapper.element.getAttribute("placeholder");
@@ -110,7 +106,7 @@ describe("TaskModal.vue for Create", () => {
   });
 
   it("save should be disabled if name is empty", async () => {
-    const button: Wrapper<TaskModal> = wrapper.find("button.button.is-primary");
+    const button: Wrapper<Vue> = wrapper.find("button.button.is-primary");
     expect((<HTMLButtonElement>button.element).disabled).toBe(true);
   });
 
@@ -118,7 +114,7 @@ describe("TaskModal.vue for Create", () => {
     const emptyId = data;
     emptyId.id = "";
     await wrapper.setData({ taskInfo: emptyId });
-    const button: Wrapper<TaskModal> = wrapper.find("button.button.is-primary");
+    const button: Wrapper<Vue> = wrapper.find("button.button.is-primary");
     await button.trigger("click");
     wrapper.vm.$nextTick(() => {
       (wrapper.vm as any).submit();

@@ -26,7 +26,7 @@ const deleteTask = jest.fn(() => Promise.resolve(data));
 const createTask = jest.fn(() => Promise.resolve(data.id));
 
 describe("TaskBoard.vue", () => {
-  let wrapper: Wrapper<TaskBoard>;
+  let wrapper: Wrapper<Vue>;
   beforeAll(function () {
     window.confirm = jest.fn(() => true);
     const store = new Vuex.Store({
@@ -76,7 +76,7 @@ describe("TaskBoard.vue", () => {
     await wrapper.vm.$nextTick();
     expect((wrapper.vm as any).isComponentModalActive).toBe(true);
 
-    const button: Wrapper<TaskBoard> = wrapper.find("button.button.is-primary");
+    const button: Wrapper<Vue> = wrapper.find("button.button.is-primary");
     await button.trigger("click");
   });
 

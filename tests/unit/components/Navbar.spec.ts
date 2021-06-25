@@ -8,7 +8,7 @@ const localVue = createLocalVue();
 localVue.use(Buefy);
 
 describe("Navbar.vue", () => {
-  let wrapper: Wrapper<Navbar>;
+  let wrapper: Wrapper<Vue>;
   beforeAll(function () {
     window.alert = jest.fn();
     wrapper = mount(Navbar, {
@@ -18,7 +18,7 @@ describe("Navbar.vue", () => {
     });
   });
   it("expect alert on Log out text", async () => {
-    const button: Wrapper<Navbar> = wrapper.find(
+    const button: Wrapper<Vue> = wrapper.find(
       "a.button.is-danger.is-light.logout-button"
     );
     await button.trigger("click");

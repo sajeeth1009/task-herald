@@ -33,7 +33,7 @@ const data = [
   },
 ] as Task[];
 describe("DataTable.vue", () => {
-  let wrapper: Wrapper<DataTable>;
+  let wrapper: Wrapper<Vue>;
   beforeAll(function () {
     wrapper = mount(DataTable, {
       propsData: { data },
@@ -68,7 +68,7 @@ describe("DataTable.vue", () => {
   });
 
   it("expect one checkbox to be checked when 1 task is complete", () => {
-    const checkboxes: WrapperArray<DataTable> = wrapper.findAll(
+    const checkboxes: WrapperArray<Vue> = wrapper.findAll(
       "label.b-checkbox.checkbox.check-box-custom"
     );
     expect(
@@ -79,7 +79,7 @@ describe("DataTable.vue", () => {
   });
 
   it("expect two checkboxes to be unchecked when 1 task is complete", () => {
-    const checkboxes: WrapperArray<DataTable> = wrapper.findAll(
+    const checkboxes: WrapperArray<Vue> = wrapper.findAll(
       "label.b-checkbox.checkbox.check-box-custom"
     );
     expect(
@@ -90,7 +90,7 @@ describe("DataTable.vue", () => {
   });
 
   it("should emit an update task event on completed status change", () => {
-    const checkboxes: WrapperArray<DataTable> = wrapper.findAll(
+    const checkboxes: WrapperArray<Vue> = wrapper.findAll(
       "label.b-checkbox.checkbox.check-box-custom"
     );
     checkboxes.wrappers[0].find("input").trigger("click");
@@ -107,7 +107,7 @@ describe("DataTable.vue", () => {
   });
 
   it("should emit an open edit task event on clicking edit icon", () => {
-    const button: Wrapper<DataTable> = wrapper.find(
+    const button: Wrapper<Vue> = wrapper.find(
       "button.button.is-primary.is-light.is-small"
     );
     button.trigger("click");
@@ -128,7 +128,7 @@ describe("DataTable.vue", () => {
   });
 
   it("should emit an open delete task event on clicking delete icon", () => {
-    const button: Wrapper<DataTable> = wrapper.find(
+    const button: Wrapper<Vue> = wrapper.find(
       "button.button.is-primary.is-small"
     );
     button.trigger("click");
