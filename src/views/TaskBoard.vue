@@ -71,7 +71,13 @@
       </div>
 
       <!-- Side Notifications -->
-      <side-bar />
+      <side-bar
+        :expiredTasks="
+          tableData.filter(
+            (task) => !task.completed && new Date(task.deadline) < new Date()
+          )
+        "
+      />
     </div>
   </div>
 </template>
