@@ -6,6 +6,7 @@ Vue Based Front end interface to create, update and delete your daily tasks.
 - GIT
 - Yarn
 - Compatible Browser (Chrome, Mozilla, Safari)
+- Running Task-Manager instance [Task-manager](https://github.com/sajeeth1009/task-manager)
 
 ## Project setup
 
