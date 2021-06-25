@@ -19,6 +19,12 @@
           :pendingTasks="tasks.pendingTasks"
         />
 
+        <text-block
+          :hidden="tasks.taskList.length !== 0"
+          backgroundType="has-background-success-light"
+          textContent="Looks like you don't have any tasks created yet. Click the Create new Task button to bring up your first task!"
+        />
+
         <!-- Create new Task Button -->
         <section>
           <div class="is-flex is-justify-content-flex-start my-3">
