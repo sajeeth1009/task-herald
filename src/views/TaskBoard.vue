@@ -106,7 +106,9 @@ export default Vue.extend({
     return initialState();
   },
   created: function () {
-    this.$store.dispatch("tasks/getTasks");
+    this.$store
+      .dispatch("tasks/getTasks")
+      .catch(() => this.$buefy.toast.open("Failed to load tasks!"));
   },
   methods: {
     /**
@@ -118,7 +120,8 @@ export default Vue.extend({
     }) {
       this.$store
         .dispatch("tasks/updateTask", event)
-        .then(() => this.$buefy.toast.open("Task updated!"));
+        .then(() => this.$buefy.toast.open("Task updated!"))
+        .catch(() => this.$buefy.toast.open("Failed to update task!"));
     },
 
     /**
@@ -143,7 +146,8 @@ export default Vue.extend({
         onConfirm: () => {
           this.$store
             .dispatch("tasks/deleteTask", event)
-            .then(() => this.$buefy.toast.open("Task deleted!"));
+            .then(() => this.$buefy.toast.open("Task deleted!"))
+            .catch(() => this.$buefy.toast.open("Failed to delete task!"));
         },
       });
     },
@@ -159,7 +163,8 @@ export default Vue.extend({
     saveTask: function (event: Task) {
       this.$store
         .dispatch("tasks/createTask", event)
-        .then(() => this.$buefy.toast.open("Task created!"));
+        .then(() => this.$buefy.toast.open("Task created!"))
+        .catch(() => this.$buefy.toast.open("Failed to create task!"));
     },
   },
   computed: {
